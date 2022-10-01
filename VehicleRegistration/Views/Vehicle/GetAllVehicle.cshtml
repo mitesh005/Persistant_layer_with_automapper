@@ -1,0 +1,52 @@
+﻿@model IEnumerable<DatabaseLayer.Model.VehicleInfo>
+
+@{
+    ViewData["Title"] = "GetAllVehicle";
+}
+
+
+<p>
+    <a asp-action="RegisterVehicle"> Register Your Vehicle </a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RegistrationNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OwnerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VehicleName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VehicleClass)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegistrationNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OwnerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VehicleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VehicleClass)
+            </td>
+            <td>
+                <a  asp-action="EditInfo" class= "btn btn-warning" role="button" asp-route-id="@item.Id">Edit</a> 
+               
+                <a asp-action="DeleteInfo" class= "btn btn-danger" role="button" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
